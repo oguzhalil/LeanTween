@@ -3218,6 +3218,18 @@ public class LTSpline {
         init(pts, constantSpeed);
     }
 
+     // added for support  of jobs system
+        public LTSpline(Vector3[] pts, Vector3[] ptsAdj, int ptsAdjLength, bool orientToPath, bool orientToPath2d, int numSections, int currPt)
+    {
+        this.pts = pts;
+        this.ptsAdj = ptsAdj;
+        this.ptsAdjLength = ptsAdjLength;
+        this.orientToPath = orientToPath;
+        this.orientToPath2d = orientToPath2d;
+        this.numSections = numSections;
+        this.currPt = currPt;
+    }
+
     private void init( Vector3[] pts, bool constantSpeed){
         if(pts.Length<4){
             LeanTween.logError( "LeanTween - When passing values for a spline path, you must pass four or more values!" );
