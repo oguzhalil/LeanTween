@@ -80,12 +80,12 @@ public class LTSeq {
 		return current;
 	}
 
-	private float addPreviousDelays(){
+	private float addPreviousDelays(bool insert = false){
 //		Debug.Log("delay:"+delay+" count:"+this.current.count+" this.current.totalDelay:"+this.current.totalDelay);
 
 		LTSeq prev = this.current.previous;
 
-		if (prev != null && prev.tween!=null) {
+		if (prev != null && prev.tween!=null && insert == false) {
             return this.current.totalDelay + prev.tween.time;
 		}
         return this.current.totalDelay;
@@ -186,7 +186,7 @@ public class LTSeq {
 	public LTSeq insert( LTDescr tween ){
 		this.current.tween = tween;
 
-        tween.setDelay( addPreviousDelays() );
+        tween.setDelay( addPreviousDelays(true) );
 
 		return addOn();
 	}
